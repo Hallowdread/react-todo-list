@@ -43,7 +43,7 @@ export default function App() {
       <h1>Todo List</h1>
       <TodoInput onAddTodo={handleAddTodo} />
       <TodoList
-        todos={todos}
+        todoArr={todos}
         onDeleteTodo={handleDeleteTodo}
         onCheckTodo={handleCheckTodo}
       />

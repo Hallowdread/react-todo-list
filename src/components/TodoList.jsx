@@ -1,10 +1,22 @@
 import { useState } from "react";
 
-export default function TodoList({ todos, onDeleteTodo, onCheckTodo }) {
+export default function TodoList({ todoArr, onDeleteTodo, onCheckTodo }) {
+  const [sortBy, setSortBy] = useState("input");
+  //
+  let sortedTodos;
+  
+  if (sortBy === "input") {
+    sortedTodos = 
+  }
+
   return (
     <>
       <div className="sort-clear">
-        <select name="sort-select">
+        <select
+          name="sort-select"
+          value={sortBy}
+          onClick={(e) => setSortBy(e.target.value)}
+        >
           <option value="input">Sort By Input Order</option>
           <option value="alphabetically">Sort Alphabetically</option>
           <option value="completed">Sort By Completed</option>
@@ -13,7 +25,7 @@ export default function TodoList({ todos, onDeleteTodo, onCheckTodo }) {
       </div>
 
       <ul className="todo-list">
-        {todos.map((todo) => (
+        {todoArr.map((todo) => (
           <Todo
             todo={todo}
             key={todo.id}
