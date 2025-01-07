@@ -2,26 +2,8 @@ import { useState } from "react";
 import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
 
-const initialTodos = [
-  {
-    id: 32232,
-    todo: "Wash my hair",
-    completed: false,
-  },
-  {
-    id: 27688,
-    todo: "Brush my teeth",
-    completed: false,
-  },
-  {
-    id: 78777,
-    todo: "Eat my breakfast",
-    completed: true,
-  },
-];
-
 export default function App() {
-  const [todos, setTodos] = useState(initialTodos);
+  const [todos, setTodos] = useState([]);
   //
   function handleAddTodo(todo) {
     setTodos((todos) => [...todos, todo]);

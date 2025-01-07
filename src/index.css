@@ -61,6 +61,11 @@ select {
   transition: background-color 0.3s;
 }
 
+select {
+  background-color: var(--muted);
+  color: var(--foreground);
+}
+
 button:hover,
 select:hover {
   opacity: 0.8;

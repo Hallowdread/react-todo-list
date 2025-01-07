@@ -9,6 +9,16 @@ export default function TodoList({ todoArr, onDeleteTodo, onCheckTodo }) {
     sortedTodos = todoArr;
   }
 
+  if (sortBy === "alphabetically") {
+    sortedTodos = todoArr.slice().sort((a, b) => a.todo.localeCompare(b.todo));
+  }
+
+  if (sortBy === "completed") {
+    sortedTodos = todoArr
+      .slice()
+      .sort((a, b) => (a.completed ? 1 : 0) - (b.completed ? 1 : 0));
+  }
+
   return (
     <>
       <div className="sort-clear">
