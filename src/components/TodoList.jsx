@@ -4,9 +4,9 @@ export default function TodoList({ todoArr, onDeleteTodo, onCheckTodo }) {
   const [sortBy, setSortBy] = useState("input");
   //
   let sortedTodos;
-  
+
   if (sortBy === "input") {
-    sortedTodos = 
+    sortedTodos = todoArr;
   }
 
   return (
@@ -15,7 +15,7 @@ export default function TodoList({ todoArr, onDeleteTodo, onCheckTodo }) {
         <select
           name="sort-select"
           value={sortBy}
-          onClick={(e) => setSortBy(e.target.value)}
+          onChange={(e) => setSortBy(e.target.value)}
         >
           <option value="input">Sort By Input Order</option>
           <option value="alphabetically">Sort Alphabetically</option>
@@ -25,7 +25,7 @@ export default function TodoList({ todoArr, onDeleteTodo, onCheckTodo }) {
       </div>
 
       <ul className="todo-list">
-        {todoArr.map((todo) => (
+        {sortedTodos.map((todo) => (
           <Todo
             todo={todo}
             key={todo.id}
