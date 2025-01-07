@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 export default function TodoList({ todoArr, onDeleteTodo, onCheckTodo }) {
   const [sortBy, setSortBy] = useState("input");
@@ -48,6 +49,18 @@ export default function TodoList({ todoArr, onDeleteTodo, onCheckTodo }) {
   );
 }
 
+TodoList.propTypes = {
+  todoArr: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      todo: PropTypes.string.isRequired,
+      completed: PropTypes.bool.isRequired,
+    })
+  ).isRequired,
+  onDeleteTodo: PropTypes.func.isRequired,
+  onCheckTodo: PropTypes.func.isRequired,
+};
+
 const Todo = ({ todo, onDeleteTodo, onCheckTodo }) => {
   return (
     <li className="todo-item">
@@ -60,4 +73,14 @@ const Todo = ({ todo, onDeleteTodo, onCheckTodo }) => {
       </button>
     </li>
   );
+};
+
+Todo.propTypes = {
+  todo: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    todo: PropTypes.string.isRequired,
+    completed: PropTypes.bool.isRequired,
+  }).isRequired,
+  onDeleteTodo: PropTypes.func.isRequired,
+  onCheckTodo: PropTypes.func.isRequired,
 };
