@@ -1,26 +1,10 @@
-const initialTodos = [
-  {
-    id: 32232,
-    todo: "Wash my hair",
-    completed: false,
-  },
-  {
-    id: 27688,
-    todo: "Brush my teeth",
-    completed: false,
-  },
-  {
-    id: 78777,
-    todo: "Eat my breakfast",
-    completed: true,
-  },
-];
+import { useState } from "react";
 
-export default function TodoList() {
+export default function TodoList({ todos, onDeleteTodo, onCheckTodo }) {
   return (
     <>
       <div className="sort-clear">
-        <select name="sort-select" id="">
+        <select name="sort-select">
           <option value="input">Sort By Input Order</option>
           <option value="alphabetically">Sort Alphabetically</option>
           <option value="completed">Sort By Completed</option>
@@ -29,22 +13,29 @@ export default function TodoList() {
       </div>
 
       <ul className="todo-list">
-        {initialTodos.map((todo) => (
-          <Todo todo={todo} key={todo.id} />
+        {todos.map((todo) => (
+          <Todo
+            todo={todo}
+            key={todo.id}
+            onDeleteTodo={onDeleteTodo}
+            onCheckTodo={onCheckTodo}
+          />
         ))}
       </ul>
     </>
   );
 }
 
-const Todo = ({ todo }) => {
+const Todo = ({ todo, onDeleteTodo, onCheckTodo }) => {
   return (
     <li className="todo-item">
-      <input type="checkbox" />
+      <input type="checkbox" onClick={() => onCheckTodo(todo.id)} />
       <span className={`todo-text ${todo.completed ? "completed" : ""}`}>
         {todo.todo}
       </span>
-      <button className="delete-button">Delete</button>
+      <button className="delete-button" onClick={() => onDeleteTodo(todo.id)}>
+        Delete
+      </button>
     </li>
   );
 };

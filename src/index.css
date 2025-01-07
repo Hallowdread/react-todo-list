@@ -129,6 +129,6 @@ select:hover {
 
 .clear-button {
   background-color: var(--muted);
-  color: var(--muted-foreground);
+  color: var(--foreground);
   font-size: 14px;
 }
